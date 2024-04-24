@@ -1,0 +1,9 @@
+.next
+convex
+**/node_modules
+dist
+build
+coverage
+public
+
+**/*.html
