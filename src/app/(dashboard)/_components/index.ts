@@ -1,3 +1,3 @@
-export { default as Navbar } from './Navbar';
-export { default as OrganizationSidebar } from './OrganizationSidebar';
-export { default as Sidebar } from './Sidebar';
+export { default as Navbar } from './Navbar/Navbar';
+export { default as OrganizationSidebar } from './Sidebar/OrganizationSidebar';
+export { default as Sidebar } from './Sidebar/Sidebar';
