@@ -22,7 +22,7 @@ const OrganizationSidebar = () => {
   return (
     <div className='hidden w-52 flex-col space-y-6 pl-5 pt-5 md:flex lg:flex'>
       <Link href={'/'}>
-        <div className='flex items-center gap-x-2'>
+        <div className='flex items-center justify-center gap-x-4'>
           <Image
             src={'logo.svg'}
             alt='Logo'
