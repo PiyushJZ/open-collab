@@ -30,7 +30,7 @@ const OrganizationSidebar = () => {
             width={60}
           />
           <span className={cn('text-2xl font-semibold', font.className)}>
-            Board
+            OpenCollab
           </span>
         </div>
       </Link>

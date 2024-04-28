@@ -4,13 +4,16 @@ import { useOrganizationList } from '@clerk/nextjs';
 import OrganizationItem from './OrganizationItem';
 
 const OrgList = () => {
-  const { userMemberships } = useOrganizationList({
+  const { userMemberships, isLoaded } = useOrganizationList({
     userMemberships: {
       infinite: true,
     },
   });
+  if (!isLoaded) {
+    return <></>;
+  }
   if (!userMemberships.data?.length) {
-    return null;
+    return <></>;
   }
   return (
     <ul className='space-y-4'>
