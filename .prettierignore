@@ -1,5 +1,5 @@
 .next
-convex
+convex/_generated
 **/node_modules
 dist
 build
