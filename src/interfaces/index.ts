@@ -17,3 +17,18 @@ export interface HintProps extends ComponentWithChildrenProps {
   sideOffset?: number;
   alignOffset?: number;
 }
+
+export interface DashboardPageProps {
+  searchParams: {
+    search?: string;
+    favorites?: string;
+  };
+}
+
+export interface BoardListProps {
+  orgId: string;
+  query: {
+    search?: string;
+    favorites?: string;
+  };
+}
