@@ -32,7 +32,8 @@ export default function RootLayout({
           <Toaster
             richColors
             theme='light'
-            position='top-center'
+            position='bottom-left'
+            className='w-full'
           />
           {children}
         </ConvexClientProvider>

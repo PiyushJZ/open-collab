@@ -1,3 +1,5 @@
+import { DropdownMenuContentProps } from '@radix-ui/react-dropdown-menu';
+
 export interface ComponentWithChildrenProps {
   children: React.ReactNode;
 }
@@ -56,4 +58,28 @@ export interface FooterProps {
 export interface AddBoardButtonProps {
   orgId: string;
   disabled: boolean;
+}
+
+export interface ActionsProps extends ComponentWithChildrenProps {
+  side: DropdownMenuContentProps['side'];
+  sideOffset?: DropdownMenuContentProps['sideOffset'];
+  id: string;
+  title: string;
+}
+
+export interface ConfirmDialogProps extends ComponentWithChildrenProps {
+  onConfirm: () => void;
+  disabled: boolean;
+  header: string;
+  description?: string;
+}
+
+export interface RenameModal {
+  isOpen: boolean;
+  initialValues: {
+    id: string;
+    title: string;
+  };
+  onOpen: (id: string, title: string) => void;
+  onClose: () => void;
 }
