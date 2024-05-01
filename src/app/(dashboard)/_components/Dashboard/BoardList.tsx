@@ -5,6 +5,7 @@ import { api } from '@/convex/_generated/api';
 import { BoardListProps } from '@/interfaces';
 import { useQuery } from 'convex/react';
 import React from 'react';
+import AddBoardButton from './AddBoardButton';
 import BoardCard from './BoardCard';
 import EmptyBoard from './EmptyBoards';
 import EmptyFavorites from './EmptyFavorites';
@@ -30,6 +31,10 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
             {query.favorites ? 'Favorites Boards' : 'Team Boards'}
           </h2>
           <div className='mt-8 grid grid-cols-1 gap-5 pb-10 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
+            <AddBoardButton
+              disabled={false}
+              orgId={orgId}
+            />
             {data.map(board => {
               return (
                 <BoardCard
@@ -41,7 +46,7 @@ const BoardList = ({ orgId, query }: BoardListProps) => {
                   authorName={board.authorName}
                   createdAt={board._creationTime}
                   orgId={board.orgId}
-                  isFavorite={false}
+                  isFavorite={true}
                 />
               );
             })}

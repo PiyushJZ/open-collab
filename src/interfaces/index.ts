@@ -43,3 +43,17 @@ export interface BoardCardProps {
   orgId: string;
   isFavorite: boolean;
 }
+
+export interface FooterProps {
+  title: string;
+  authorLabel: string;
+  createdAtLabel: string;
+  isFavorite: boolean;
+  onClick: () => void;
+  disabled: boolean;
+}
+
+export interface AddBoardButtonProps {
+  orgId: string;
+  disabled: boolean;
+}
