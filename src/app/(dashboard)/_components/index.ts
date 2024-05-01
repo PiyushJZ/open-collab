@@ -1,3 +1,4 @@
+export { default as BoardList } from './Dashboard/BoardList';
 export { default as EmptyOrg } from './Dashboard/EmptyOrg';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as OrganizationSidebar } from './OrganizationSidebar';

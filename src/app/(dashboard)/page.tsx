@@ -2,8 +2,7 @@
 
 import { DashboardPageProps } from '@/interfaces';
 import { useOrganization } from '@clerk/nextjs';
-import { EmptyOrg } from './_components';
-import BoardList from './_components/Dashboard/BoardList';
+import { BoardList, EmptyOrg } from './_components';
 
 const DashboardPage = ({ searchParams }: DashboardPageProps) => {
   const { organization } = useOrganization();

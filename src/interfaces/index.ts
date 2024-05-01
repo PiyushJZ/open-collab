@@ -32,3 +32,14 @@ export interface BoardListProps {
     favorites?: string;
   };
 }
+
+export interface BoardCardProps {
+  id: string;
+  title: string;
+  imageUrl: string;
+  authorId: string;
+  authorName: string;
+  createdAt: number;
+  orgId: string;
+  isFavorite: boolean;
+}

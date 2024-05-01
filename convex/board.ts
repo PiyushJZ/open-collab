@@ -28,7 +28,7 @@ export const create = mutation({
     title: v.string(),
   },
   handler: async (ctx, args) => {
-    const identity = ctx.auth.getUserIdentity();
+    const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
       throw new Error('Unauthorized');
     }
@@ -38,7 +38,7 @@ export const create = mutation({
       title: args.title,
       orgId: args.orgId,
       authorId: identity.subject,
-      authorName: identity.name,
+      authorName: identity.name!,
       imageUrl: randomImage,
     });
     return board;

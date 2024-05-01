@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/sonner';
 import { cn } from '@/lib/utils';
 import ConvexClientProvider from '@/providers/ConvexClientProvider';
 import type { Metadata } from 'next';
@@ -27,7 +28,13 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+        <ConvexClientProvider>
+          <Toaster
+            richColors
+            theme='light'
+          />
+          {children}
+        </ConvexClientProvider>
       </body>
     </html>
   );
