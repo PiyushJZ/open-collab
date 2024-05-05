@@ -11,13 +11,16 @@ import { BUTTON_VARIANTS } from '@/constants';
 import { api } from '@/convex/_generated/api';
 import { useApiMutation } from '@/hooks';
 import { ActionsProps } from '@/interfaces';
-import { Link2, Trash2 } from 'lucide-react';
+import { useRenameModal } from '@/store/useRenameModal';
+import { Link2, Pencil, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 import ConfirmDialog from './Dialogs/ConfirmDialog';
 import { Button } from './ui/button';
 
 const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
   const { mutate, pending } = useApiMutation(api.board.remove);
+  const { onOpen } = useRenameModal();
+
   const copyBoardLink = () => {
     navigator.clipboard
       .writeText(`${window.location.origin}/board/${id}`)
@@ -46,6 +49,13 @@ const Actions = ({ children, side, sideOffset, id, title }: ActionsProps) => {
         >
           <Link2 className='mr-2 h-4 w-4' />
           Copy Board Link
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => onOpen(id, title)}
+          className='cursor-pointer p-3'
+        >
+          <Pencil className='mr-2 h-4 w-4' />
+          Rename
         </DropdownMenuItem>
         <ConfirmDialog
           header='Delete Board?'
