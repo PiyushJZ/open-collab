@@ -54,7 +54,16 @@ export const remove = mutation({
     if (!identity) {
       throw new Error('Unauthorized');
     }
-    // TODO: Later add logic to delete favorite as well
+    const userId = identity.subject;
+    const existingFavorite = await ctx.db
+      .query('userFavorites')
+      .withIndex('by_user_board', q =>
+        q.eq('userId', userId).eq('boardId', args.id),
+      )
+      .unique();
+    if (existingFavorite) {
+      await ctx.db.delete(existingFavorite._id);
+    }
     await ctx.db.delete(args.id);
   },
 });
@@ -76,7 +85,6 @@ export const update = mutation({
     if (title.length > 60) {
       throw new Error('Title cannot be longer than 60 characters');
     }
-    // TODO: Later add logic to delete favorite as well
     const board = await ctx.db.patch(args.id, {
       title: args.title,
     });
@@ -103,8 +111,8 @@ export const favorite = mutation({
     const userId = identity.subject;
     const existingFavorite = await ctx.db
       .query('userFavorites')
-      .withIndex('by_user_board_org', q =>
-        q.eq('userId', userId).eq('boardId', args.id).eq('orgId', board.orgId),
+      .withIndex('by_user_board', q =>
+        q.eq('userId', userId).eq('boardId', args.id),
       )
       .unique();
     if (existingFavorite) {
@@ -134,7 +142,6 @@ export const unfavorite = mutation({
     if (!board) {
       throw new Error('Board not found');
     }
-    // TODO: Check if orgId needed
     const userId = identity.subject;
     const existingFavorite = await ctx.db
       .query('userFavorites')

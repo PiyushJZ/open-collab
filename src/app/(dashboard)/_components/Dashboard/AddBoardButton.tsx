@@ -3,10 +3,13 @@ import { useApiMutation } from '@/hooks';
 import { AddBoardButtonProps } from '@/interfaces';
 import { cn } from '@/lib/utils';
 import { Plus } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 const AddBoardButton = ({ orgId, disabled }: AddBoardButtonProps) => {
   const { mutate, pending } = useApiMutation(api.board.create);
+  const router = useRouter();
+
   const handleAddBoard = () => {
     mutate({
       orgId,
@@ -14,7 +17,7 @@ const AddBoardButton = ({ orgId, disabled }: AddBoardButtonProps) => {
     })
       .then(({ id }) => {
         toast.success(`Board created`);
-        // TODO: redirect to board/{id}
+        router.push(`/board/${id}`);
       })
       .catch(error => {
         console.error(error);
