@@ -1,13 +1,20 @@
+import { LoaderProps } from '@/interfaces';
 import { ThreeCircles } from 'react-loader-spinner';
+import { twMerge } from 'tailwind-merge';
 
-const Loader = () => {
+const Loader = ({ className }: LoaderProps) => {
   return (
-    <div className='flex h-full w-full items-center justify-center'>
+    <div
+      className={twMerge(
+        'flex h-full w-full items-center justify-center',
+        className,
+      )}
+    >
       <ThreeCircles
         ariaLabel='Loading'
         color='#7C3AED'
-        height={150}
-        width={150}
+        height={100}
+        width={100}
       />
     </div>
   );
