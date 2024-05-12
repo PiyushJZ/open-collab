@@ -12,7 +12,7 @@ import EmptyFavorites from './EmptyFavorites';
 import EmptySearch from './EmptySearch';
 
 const BoardList = ({ orgId, query }: BoardListProps) => {
-  const data = useQuery(api.boards.get, { orgId });
+  const data = useQuery(api.boards.get, { orgId, ...query });
 
   return data === undefined ? (
     <Loader />
