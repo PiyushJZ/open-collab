@@ -102,3 +102,7 @@ export interface RoomProps extends ComponentWithChildrenProps {
 export interface LoaderProps {
   className?: string;
 }
+
+export interface InfoProps {
+  boardId: string;
+}
