@@ -5,4 +5,6 @@ export enum BUTTON_VARIANTS {
   SECONDARY = 'secondary',
   GHOST = 'ghost',
   LINK = 'link',
+  BOARD = 'board',
+  BOARD_ACTIVE = 'boardActive',
 }

@@ -5,6 +5,7 @@ export const env = createEnv({
   server: {
     CONVEX_DEPLOYMENT: z.string(),
     CLERK_SECRET_KEY: z.string(),
+    LIVEBLOCKS_SECRET_KEY: z.string(),
   },
 
   /**
@@ -31,6 +32,7 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY:
       process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY,
+    LIVEBLOCKS_SECRET_KEY: process.env.LIVEBLOCKS_SECRET_KEY,
   },
 
   /**
