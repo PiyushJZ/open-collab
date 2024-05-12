@@ -4,3 +4,4 @@ export { default as ConfirmDialog } from './Dialogs/ConfirmDialog';
 export { default as RenameDialog } from './Dialogs/RenameDialog';
 export { default as Hint } from './Hint';
 export { default as Loader } from './Loader';
+export { default as Room } from './Room';

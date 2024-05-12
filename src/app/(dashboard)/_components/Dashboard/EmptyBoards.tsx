@@ -21,7 +21,7 @@ const EmptyBoard = () => {
       orgId: organization.id,
       title: 'Untitled',
     })
-      .then(({ id }) => {
+      .then(id => {
         toast.success(`Board created`);
         router.push(`/board/${id}`);
       })

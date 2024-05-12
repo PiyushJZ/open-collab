@@ -83,3 +83,22 @@ export interface RenameModal {
   onOpen: (id: string, title: string) => void;
   onClose: () => void;
 }
+
+export interface BoardIdPageProps {
+  params: {
+    boardId: string;
+  };
+}
+
+export interface CanvasProps {
+  boardId: string;
+}
+
+export interface RoomProps extends ComponentWithChildrenProps {
+  roomId: string;
+  fallback: NonNullable<React.ReactNode> | null;
+}
+
+export interface LoaderProps {
+  className?: string;
+}
