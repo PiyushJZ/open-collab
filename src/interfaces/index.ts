@@ -1,4 +1,5 @@
 import { DropdownMenuContentProps } from '@radix-ui/react-dropdown-menu';
+import { LucideIcon } from 'lucide-react';
 
 export interface ComponentWithChildrenProps {
   children: React.ReactNode;
@@ -105,4 +106,19 @@ export interface LoaderProps {
 
 export interface InfoProps {
   boardId: string;
+}
+
+export interface UserAvatarProps {
+  src?: string;
+  name?: string;
+  fallback?: string;
+  borderColor?: string;
+}
+
+export interface ToolButtonProps {
+  label: string;
+  icon: LucideIcon;
+  onClick: () => void;
+  isActive?: boolean;
+  isDisabled?: boolean;
 }
