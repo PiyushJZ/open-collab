@@ -8,3 +8,28 @@ export enum BUTTON_VARIANTS {
   BOARD = 'board',
   BOARD_ACTIVE = 'boardActive',
 }
+
+export enum CanvasMode {
+  NONE,
+  PRESSING,
+  SELECTION_NET,
+  TRANSLATING,
+  INSERTING,
+  RESIZING,
+  PENCIL,
+}
+
+export enum LayerType {
+  RECTANGLE,
+  ELLIPSE,
+  PATH,
+  TEXT,
+  NOTE,
+}
+
+export enum Side {
+  TOP = 1,
+  BOTTOM = 2,
+  LEFT = 4,
+  RIGHT = 8,
+}
