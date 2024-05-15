@@ -17,7 +17,6 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-fragments": "error",
-    // "react/no-multi-comp": "error",
     "react/prefer-exact-props": "error",
     "react/prop-types": "error"
   },

@@ -212,3 +212,7 @@ export interface ToolbarProps {
   canUndo: boolean;
   canRedo: boolean;
 }
+
+export interface CursorProps {
+  connectionId: number;
+}
