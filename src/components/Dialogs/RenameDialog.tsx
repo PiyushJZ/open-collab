@@ -8,7 +8,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import { BUTTON_VARIANTS } from '@/constants';
 import { api } from '@/convex/_generated/api';
