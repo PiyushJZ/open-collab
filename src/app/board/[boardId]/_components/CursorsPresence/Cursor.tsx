@@ -10,7 +10,6 @@ const Cursor = memo(({ connectionId }: CursorProps) => {
   const info = useOther(connectionId, user => user?.info);
   const cursor = useOther(connectionId, user => user.presence.cursor);
   const name = info.name ?? 'Teammate';
-  const { x, y } = cursor!;
 
   return !cursor ? (
     <></>
@@ -18,7 +17,7 @@ const Cursor = memo(({ connectionId }: CursorProps) => {
     <>
       <foreignObject
         style={{
-          transform: `translateX(${x}px) translateY(${y}px)`,
+          transform: `translateX(${cursor.x}px) translateY(${cursor.y}px)`,
         }}
         height={50}
         width={name.length * 10 + 24}

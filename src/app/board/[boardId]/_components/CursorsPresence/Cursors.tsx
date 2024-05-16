@@ -5,13 +5,16 @@ import Cursor from './Cursor';
 
 const Cursors = () => {
   const ids = useOthersConnectionIds();
+
   return (
     <>
       {ids.map(connectionId => {
-        <Cursor
-          key={connectionId}
-          connectionId={connectionId}
-        />;
+        return (
+          <Cursor
+            key={connectionId}
+            connectionId={connectionId}
+          />
+        );
       })}
     </>
   );
