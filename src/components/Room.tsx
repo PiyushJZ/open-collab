@@ -8,7 +8,7 @@ const Room = ({ children, roomId, fallback }: RoomProps) => {
   return (
     <RoomProvider
       id={roomId}
-      initialPresence={{}}
+      initialPresence={{ cursor: null }}
     >
       <ClientSideSuspense fallback={fallback}>
         {() => children}

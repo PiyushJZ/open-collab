@@ -1,3 +1,4 @@
+import { CanvasMode, LayerType, Side } from '@/constants';
 import { DropdownMenuContentProps } from '@radix-ui/react-dropdown-menu';
 import { LucideIcon } from 'lucide-react';
 
@@ -121,4 +122,97 @@ export interface ToolButtonProps {
   onClick: () => void;
   isActive?: boolean;
   isDisabled?: boolean;
+}
+
+export interface Color {
+  r: number;
+  g: number;
+  b: number;
+}
+
+export interface Camera {
+  x: number;
+  y: number;
+}
+
+export interface XYWH extends Camera {
+  width: number;
+  height: number;
+}
+
+export interface Point extends Camera {}
+
+export interface Layer extends Camera {
+  fill: Color;
+  width: number;
+  height: number;
+  value?: string;
+}
+
+export interface RectangleLayer extends Layer {
+  type: LayerType.RECTANGLE;
+}
+
+export interface EllipseLayer extends Layer {
+  type: LayerType.ELLIPSE;
+}
+
+export interface PathLayer extends Layer {
+  type: LayerType.PATH;
+  points: number[][];
+}
+
+export interface TextLayer extends Layer {
+  type: LayerType.TEXT;
+}
+
+export interface NoteLayer extends Layer {
+  type: LayerType.NOTE;
+}
+
+export type CanvasState =
+  | {
+      mode: CanvasMode.NONE;
+    }
+  | {
+      mode: CanvasMode.SELECTION_NET;
+      origin: Point;
+      current?: Point;
+    }
+  | {
+      mode: CanvasMode.TRANSLATING;
+      current: Point;
+    }
+  | {
+      mode: CanvasMode.INSERTING;
+      layerType:
+        | LayerType.ELLIPSE
+        | LayerType.RECTANGLE
+        | LayerType.TEXT
+        | LayerType.NOTE;
+    }
+  | {
+      mode: CanvasMode.PENCIL;
+    }
+  | {
+      mode: CanvasMode.PRESSING;
+      origin: Point;
+    }
+  | {
+      mode: CanvasMode.RESIZING;
+      initialBound: XYWH;
+      corner: Side;
+    };
+
+export interface ToolbarProps {
+  canvasState: CanvasState;
+  setCanvasState: (newState: CanvasState) => void;
+  undo: () => void;
+  redo: () => void;
+  canUndo: boolean;
+  canRedo: boolean;
+}
+
+export interface CursorProps {
+  connectionId: number;
 }

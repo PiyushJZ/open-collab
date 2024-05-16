@@ -1,7 +1,7 @@
 'use client';
 
 import { RenameDialog } from '@/components';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);

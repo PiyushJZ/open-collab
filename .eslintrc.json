@@ -1,3 +1,24 @@
 {
-  "extends": "next/core-web-vitals"
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@next/next/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["react", "react-hooks", "@next/next", "@typescript-eslint"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-fragments": "error",
+    "react/prefer-exact-props": "error",
+    "react/prop-types": "error"
+  },
+  "ignorePatterns": ["src/components/ui/*"]
 }
