@@ -1,4 +1,4 @@
-import { CanvasMode, LayerType, Side } from '@/constants';
+import { CanvasMode, LayerTypes, Side } from '@/constants';
 import { DropdownMenuContentProps } from '@radix-ui/react-dropdown-menu';
 import { LucideIcon } from 'lucide-react';
 
@@ -124,11 +124,11 @@ export interface ToolButtonProps {
   isDisabled?: boolean;
 }
 
-export interface Color {
+export type Color = {
   r: number;
   g: number;
   b: number;
-}
+};
 
 export interface Camera {
   x: number;
@@ -150,24 +150,24 @@ export interface Layer extends Camera {
 }
 
 export interface RectangleLayer extends Layer {
-  type: LayerType.RECTANGLE;
+  type: LayerTypes.RECTANGLE;
 }
 
 export interface EllipseLayer extends Layer {
-  type: LayerType.ELLIPSE;
+  type: LayerTypes.ELLIPSE;
 }
 
 export interface PathLayer extends Layer {
-  type: LayerType.PATH;
+  type: LayerTypes.PATH;
   points: number[][];
 }
 
 export interface TextLayer extends Layer {
-  type: LayerType.TEXT;
+  type: LayerTypes.TEXT;
 }
 
 export interface NoteLayer extends Layer {
-  type: LayerType.NOTE;
+  type: LayerTypes.NOTE;
 }
 
 export type CanvasState =
@@ -185,11 +185,11 @@ export type CanvasState =
     }
   | {
       mode: CanvasMode.INSERTING;
-      layerType:
-        | LayerType.ELLIPSE
-        | LayerType.RECTANGLE
-        | LayerType.TEXT
-        | LayerType.NOTE;
+      layerTypes:
+        | LayerTypes.ELLIPSE
+        | LayerTypes.RECTANGLE
+        | LayerTypes.TEXT
+        | LayerTypes.NOTE;
     }
   | {
       mode: CanvasMode.PENCIL;
@@ -215,4 +215,29 @@ export interface ToolbarProps {
 
 export interface CursorProps {
   connectionId: number;
+}
+
+export type LayerType =
+  | RectangleLayer
+  | EllipseLayer
+  | PathLayer
+  | TextLayer
+  | NoteLayer;
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type FromInterface<T> = T extends Function
+  ? T
+  : { [K in keyof T]: FromInterface<T[K]> };
+
+export interface LayerPreviewProps {
+  id: string;
+  onLayerPointerDown: (e: React.PointerEvent, layerId: string) => void;
+  selectionColor: string;
+}
+
+export interface RectangleLayerProps {
+  id: string;
+  layer: RectangleLayer;
+  onPointerDown: (e: React.PointerEvent, id: string) => void;
+  selectionColor?: string;
 }

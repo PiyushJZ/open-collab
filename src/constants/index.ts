@@ -19,7 +19,7 @@ export enum CanvasMode {
   PENCIL,
 }
 
-export enum LayerType {
+export enum LayerTypes {
   RECTANGLE,
   ELLIPSE,
   PATH,

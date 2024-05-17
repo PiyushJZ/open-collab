@@ -1,4 +1,4 @@
-import { CanvasMode, LayerType } from '@/constants';
+import { CanvasMode, LayerTypes } from '@/constants';
 import { ToolbarProps } from '@/interfaces';
 import {
   Circle,
@@ -42,12 +42,12 @@ const Toolbar = ({
           onClick={() =>
             setCanvasState({
               mode: CanvasMode.INSERTING,
-              layerType: LayerType.TEXT,
+              layerTypes: LayerTypes.TEXT,
             })
           }
           isActive={
             canvasState.mode === CanvasMode.INSERTING &&
-            canvasState.layerType === LayerType.TEXT
+            canvasState.layerTypes === LayerTypes.TEXT
           }
           isDisabled={false}
         />
@@ -57,12 +57,12 @@ const Toolbar = ({
           onClick={() =>
             setCanvasState({
               mode: CanvasMode.INSERTING,
-              layerType: LayerType.NOTE,
+              layerTypes: LayerTypes.NOTE,
             })
           }
           isActive={
             canvasState.mode === CanvasMode.INSERTING &&
-            canvasState.layerType === LayerType.NOTE
+            canvasState.layerTypes === LayerTypes.NOTE
           }
           isDisabled={false}
         />
@@ -72,12 +72,12 @@ const Toolbar = ({
           onClick={() =>
             setCanvasState({
               mode: CanvasMode.INSERTING,
-              layerType: LayerType.RECTANGLE,
+              layerTypes: LayerTypes.RECTANGLE,
             })
           }
           isActive={
             canvasState.mode === CanvasMode.INSERTING &&
-            canvasState.layerType === LayerType.RECTANGLE
+            canvasState.layerTypes === LayerTypes.RECTANGLE
           }
           isDisabled={false}
         />
@@ -87,12 +87,12 @@ const Toolbar = ({
           onClick={() =>
             setCanvasState({
               mode: CanvasMode.INSERTING,
-              layerType: LayerType.ELLIPSE,
+              layerTypes: LayerTypes.ELLIPSE,
             })
           }
           isActive={
             canvasState.mode === CanvasMode.INSERTING &&
-            canvasState.layerType === LayerType.ELLIPSE
+            canvasState.layerTypes === LayerTypes.ELLIPSE
           }
           isDisabled={false}
         />
