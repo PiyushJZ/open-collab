@@ -1,7 +1,14 @@
 'use client';
 
-import { CanvasMode, LayerTypes } from '@/constants';
-import { Camera, CanvasProps, CanvasState, Color, Point } from '@/interfaces';
+import { CanvasMode, LayerTypes, Side } from '@/constants';
+import {
+  Camera,
+  CanvasProps,
+  CanvasState,
+  Color,
+  Point,
+  XYWH,
+} from '@/interfaces';
 import { connectionIdToColor, pointerEventToCanvasPoint } from '@/lib/utils';
 import {
   useCanRedo,
@@ -73,6 +80,14 @@ const Canvas = ({ boardId }: CanvasProps) => {
       setCanvasState({ mode: CanvasMode.NONE });
     },
     [lastUsedColor],
+  );
+
+  const handleResizeHandlePointerDown = useCallback(
+    (corner: Side, initialBound: XYWH) => {
+      history.pause();
+      setCanvasState({ mode: CanvasMode.RESIZING, initialBound, corner });
+    },
+    [history],
   );
 
   const handleWheel = useCallback((e: React.WheelEvent) => {
@@ -171,7 +186,9 @@ const Canvas = ({ boardId }: CanvasProps) => {
               selectionColor={layerIdsToColorSelection[layerId]}
             />
           ))}
-          <SelectionBox onResizeHandlePointerDown={() => {}} />
+          <SelectionBox
+            onResizeHandlePointerDown={handleResizeHandlePointerDown}
+          />
           <CursorsPresence />
         </g>
       </svg>
