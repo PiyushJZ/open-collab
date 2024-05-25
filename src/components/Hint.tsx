@@ -23,7 +23,7 @@ const Hint = ({
         <TooltipContent
           className='border-black bg-black text-white'
           side={side}
-          align={align}
+          align={align ?? 'center'}
           sideOffset={sideOffset}
           alignOffset={alignOffset}
         >
