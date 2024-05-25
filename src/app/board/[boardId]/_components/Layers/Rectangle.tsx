@@ -1,13 +1,12 @@
 import { RectangleLayerProps } from '@/interfaces';
+import { colorToCss } from '@/lib/utils';
 
 const Rectangle = ({
   id,
   layer,
   onPointerDown,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   selectionColor,
 }: RectangleLayerProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { x, y, width, height, fill } = layer;
   return (
     <rect
@@ -20,8 +19,8 @@ const Rectangle = ({
       y={0}
       width={width}
       height={height}
-      fill={'#000'}
-      stroke={'transparent'}
+      fill={fill ? colorToCss(fill) : '#000'}
+      stroke={selectionColor ?? 'transparent'}
       strokeWidth={1}
     />
   );

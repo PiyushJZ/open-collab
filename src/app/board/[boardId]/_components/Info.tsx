@@ -44,6 +44,7 @@ const Info = ({ boardId }: InfoProps) => {
               alt='Logo'
               height={30}
               width={40}
+              priority
             />
             <span
               className={cn(
