@@ -17,7 +17,7 @@ export interface OrgItemProps {
 export interface HintProps extends ComponentWithChildrenProps {
   label: string;
   side: 'top' | 'bottom' | 'right' | 'left';
-  align: 'start' | 'center' | 'end';
+  align?: 'start' | 'center' | 'end';
   sideOffset?: number;
   alignOffset?: number;
 }
@@ -244,4 +244,18 @@ export interface RectangleLayerProps {
 
 export interface SelectionBoxProps {
   onResizeHandlePointerDown: (corner: Side, initialBounds: XYWH) => void;
+}
+
+export interface SelectionToolsProps {
+  camera: Camera;
+  setLastUsedColor: (color: Color) => void;
+}
+
+export interface ColorPickerProps {
+  onChange: (color: Color) => void;
+}
+
+export interface ColorButtonProps {
+  onClick: (color: Color) => void;
+  color: Color;
 }

@@ -1,5 +1,9 @@
 import { LayerType, XYWH } from '@/interfaces';
-import { useSelf, useStorage } from '@/liveblocks.config';
+import {
+  useMutation as useDeleteMutation,
+  useSelf,
+  useStorage,
+} from '@/liveblocks.config';
 import { shallow } from '@liveblocks/react';
 import { useMutation } from 'convex/react';
 import { useState } from 'react';
@@ -72,4 +76,24 @@ export const useSelectionBounds = () => {
 
     return boundingBox(selectedLayers);
   }, shallow);
+};
+
+export const useDeleteLayers = () => {
+  const selection = useSelf(me => me.presence.selection);
+
+  return useDeleteMutation(
+    ({ storage, setMyPresence }) => {
+      const liveLayers = storage.get('layers');
+      const liveLayerIds = storage.get('layerIds');
+      for (const id of selection) {
+        liveLayers.delete(id);
+        const index = liveLayerIds.indexOf(id);
+        if (index != -1) {
+          liveLayerIds.delete(index);
+        }
+      }
+      setMyPresence({ selection: [] }, { addToHistory: true });
+    },
+    [selection],
+  );
 };

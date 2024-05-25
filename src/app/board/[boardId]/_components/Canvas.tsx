@@ -30,6 +30,7 @@ import Info from './Info';
 import LayerPreview from './LayerPreview';
 import Participants from './Participants';
 import SelectionBox from './SelectionBox';
+import SelectionTools from './SelectionTools';
 import Toolbar from './Toolbar';
 
 const MAX_LAYERS = 100;
@@ -40,7 +41,6 @@ const Canvas = ({ boardId }: CanvasProps) => {
     mode: CanvasMode.NONE,
   });
   const [camera, setCamera] = useState<Camera>({ x: 0, y: 0 });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [lastUsedColor, setLastUsedColor] = useState<Color>({
     r: 255,
     g: 255,
@@ -248,6 +248,10 @@ const Canvas = ({ boardId }: CanvasProps) => {
         canRedo={canRedo}
         undo={history.undo}
         redo={history.redo}
+      />
+      <SelectionTools
+        camera={camera}
+        setLastUsedColor={setLastUsedColor}
       />
       <svg
         className='h-screen w-screen'
