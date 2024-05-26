@@ -6,7 +6,7 @@ import {
 } from '@/liveblocks.config';
 import { shallow } from '@liveblocks/react';
 import { useMutation } from 'convex/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const boundingBox = (layers: LayerType[]): XYWH | null => {
   const first = layers[0];
@@ -96,4 +96,13 @@ export const useDeleteLayers = () => {
     },
     [selection],
   );
+};
+
+export const useDisableScrollBounds = () => {
+  useEffect(() => {
+    document.body.classList.add('overflow-hidden', 'overscroll-none');
+    return () => {
+      document.body.classList.remove('overflow-hidden', 'overscroll-none');
+    };
+  }, []);
 };
