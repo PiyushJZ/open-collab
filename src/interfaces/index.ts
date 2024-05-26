@@ -242,6 +242,36 @@ export interface RectangleLayerProps {
   selectionColor?: string;
 }
 
+export interface EllipseLayerProps {
+  id: string;
+  layer: EllipseLayer;
+  onPointerDown: (e: React.PointerEvent, id: string) => void;
+  selectionColor?: string;
+}
+
+export interface TextLayerProps {
+  id: string;
+  layer: TextLayer;
+  onPointerDown: (e: React.PointerEvent, id: string) => void;
+  selectionColor?: string;
+}
+
+export interface NoteLayerProps {
+  id: string;
+  layer: NoteLayer;
+  onPointerDown: (e: React.PointerEvent, id: string) => void;
+  selectionColor?: string;
+}
+
+export interface PathLayerProps {
+  x: number;
+  y: number;
+  points: number[][];
+  fill: string;
+  onPointerDown?: (e: React.PointerEvent) => void;
+  stroke?: string;
+}
+
 export interface SelectionBoxProps {
   onResizeHandlePointerDown: (corner: Side, initialBounds: XYWH) => void;
 }

@@ -2,11 +2,12 @@
 
 import { memo } from 'react';
 import Cursors from './Cursors';
+import Drafts from './Drafts';
 
 const CursorsPresence = memo(() => {
   return (
     <>
-      {/* TODO: Draft pencil */}
+      <Drafts />
       <Cursors />
     </>
   );
