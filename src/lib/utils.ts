@@ -1,5 +1,13 @@
 import { Side } from '@/constants';
-import { Camera, Color, Point, XYWH } from '@/interfaces';
+import {
+  Camera,
+  Color,
+  FromInterface,
+  LayerType,
+  Point,
+  XYWH,
+} from '@/interfaces';
+import { LiveMap, LiveObject } from '@liveblocks/core';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -67,3 +75,40 @@ export function resizeBounds(bounds: XYWH, corner: Side, point: Point): XYWH {
 
   return result;
 }
+
+export const findIntersectingLayersWithRectangle = (
+  layerIds: readonly string[],
+  layers: LiveMap<string, LiveObject<FromInterface<LayerType>>>,
+  a: Point,
+  b: Point,
+) => {
+  const rect = {
+    x: Math.min(a.x, b.x),
+    y: Math.min(a.y, b.y),
+    width: Math.abs(a.x - b.x),
+    height: Math.abs(a.y - b.y),
+  };
+
+  const ids = [];
+  for (const layerId of layerIds) {
+    const layer = layers.get(layerId);
+    if (!layer) {
+      continue;
+    }
+
+    const x = layer.get('x');
+    const y = layer.get('y');
+    const width = layer.get('width');
+    const height = layer.get('height');
+
+    if (
+      rect.x < x + width &&
+      rect.x + rect.width > x &&
+      rect.y < y + height &&
+      rect.y + rect.height > y
+    ) {
+      ids.push(layerId);
+    }
+  }
+  return ids;
+};
